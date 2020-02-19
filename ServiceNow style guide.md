@@ -1,0 +1,2 @@
+1. On catalog item rename put old item name at least to sc_cat_item.meta field if item was used in production at least once for last 3 months. For popular items it makes sense to keep old name in the sc_cat_item.name for some time. So that users will have time to adapt.
+2. Use ";" (semicolon) as a separator if you need to show list of usernames in a string. For example, pattern "<last name>, <first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Pereiras, Michael".
