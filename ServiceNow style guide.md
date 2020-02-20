@@ -2,3 +2,4 @@
 2. Use ";" (semicolon) as a separator if you need to show list of usernames in a string. For example, pattern "<last name>, <first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Pereiras, Michael".
 3. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 4. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord("incident")`.
+5. Do not use plural for ServiceNow table names. Example: `incident`.
