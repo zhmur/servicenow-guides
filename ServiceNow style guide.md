@@ -3,3 +3,4 @@
 3. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 4. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord("incident")`.
 5. Use singular for ServiceNow table names. Example: `incident`.
+6. Use batch update sets whenever possible. Even if you have only 2 update sets for productionizing, go ahead and select one of them as a parent.
