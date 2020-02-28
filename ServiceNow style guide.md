@@ -4,3 +4,5 @@
 4. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord("incident")`.
 5. Use singular for ServiceNow table names. Example: `incident`.
 6. Use batch update sets whenever possible. Even if you have only 2 update sets for productionizing, go ahead and select one of them as a parent.
+7. Capitalize only first letter of the field label. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token".
+8. Capitalize each word of the table label. Examples: "Catalog Task", "Support Group".
