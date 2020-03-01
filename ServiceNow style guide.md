@@ -6,4 +6,4 @@
 1. Use batch update sets whenever possible. Even if you have only 2 update sets for productionizing, go ahead and select one of them as a parent.
 1. Capitalize only first letter of the field label. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token".
 1. Capitalize each word of the table label. Examples: "Catalog Task", "Support Group".
-1. Use plural for slushbacket fields. Example: "u_regions", "u_countries".
+1. Use plural for slushbacket fields. Examples: "u_regions", "u_countries".
