@@ -1,5 +1,5 @@
 1. Use singular names for the tables. Example: "incident".
-1. Use plural for the slushbacket fields. Example: "u_regions", "u_countries".
+1. Use plural names for the slushbacket fields. Example: "u_regions", "u_countries".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
 1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token".
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
