@@ -22,3 +22,6 @@
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
+
+## Performance
+1. Specify fields to return by a database view.
