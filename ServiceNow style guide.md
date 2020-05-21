@@ -27,3 +27,6 @@
 ## Performance
 1. Specify fields to return by a database view.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
+
+## Tricks
+1. In navigation menu use uppercase "table_name.DO" or "table_name.LIST" to open a form or list in a separate browser tab.
