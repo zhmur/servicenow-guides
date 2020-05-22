@@ -17,10 +17,10 @@
 ## Programming, code, style
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 1. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord('incident')`.
-1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Global business rule is a Legacy/Dead approach. Never create one.
 1. A business rule must call an API to perform an action. The API is implemented in script includes. The code in business rules must be simple.
 1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional. The objects should not be passed as parameters.
+1. To debug a script always use "gs.debug" or "gs.info" instead of "gs.log" as gs.log is not working in scoped app.
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
@@ -30,4 +30,5 @@
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 
 ## Tricks
+1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. In navigation menu use uppercase "table_name.DO" or "table_name.LIST" to open a form or list in a separate browser tab.
