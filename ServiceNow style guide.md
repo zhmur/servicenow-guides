@@ -1,5 +1,4 @@
 ## Syntax, names, labels, defaults
-
 1. Use singular name for the tables. Example: "incident".
 1. Use plural name for the slushbacket (_List_ type) fields. Examples: "u_regions", "u_countries".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
@@ -9,6 +8,7 @@
 
 ## Maintenance
 1. Put old item name to sc_cat_item.meta field in case of catalog item rename. If item was used in production at least once in last 3 months. For popular items consider keeping old name in the sc_cat_item.name for some time. So that users will have time to adapt.
+1. Never delete records, use archive instead.
 
 ## Deployments
 1. Use batch update sets whenever possible. Even if you have only 2 update sets for productionizing, go ahead and select one of them as a parent.
@@ -21,6 +21,8 @@
 1. A business rule must call an API to perform an action. The API is implemented in script includes. The code in business rules must be simple.
 1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional. The objects should not be passed as parameters.
 1. To debug a script always use "gs.debug" or "gs.info" instead of "gs.log" as gs.log is not working in scoped app.
+1. If a Business rule, workflow, scheduled job/whatever script updates a record, always put a comment/work notes into the target record which allows identifying the code which updated it.
+1. Never use direct table API for integrations, use import set table instead. It allows to control imported data and even disable if needed.
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
