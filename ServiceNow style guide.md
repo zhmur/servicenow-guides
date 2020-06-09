@@ -34,3 +34,4 @@
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. In navigation menu use uppercase "table_name.DO" or "table_name.LIST" to open a form or list in a separate browser tab.
+1. Override (only if necessary) list rows per page limit using the URL parameter sysparm_force_row_count. Example: ?sysparm_force_row_count=10000 .
