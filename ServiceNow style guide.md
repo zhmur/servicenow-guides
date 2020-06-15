@@ -28,7 +28,7 @@
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 
 ## Performance
-1. Specify fields to return by a database view.
+1. Specify fields to return by a database view. And include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 
 ## Tricks
