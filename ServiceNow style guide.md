@@ -8,7 +8,7 @@
 
 ## Maintenance
 1. Put old item name to sc_cat_item.meta field in case of catalog item rename. If item was used in production at least once in last 3 months. For popular items consider keeping old name in the sc_cat_item.name for some time. So that users will have time to adapt.
-1. Never delete records, use archive instead.
+1. Never delete old records, use archive instead.
 
 ## Deployments
 1. Use batch update sets whenever possible. Even if you have only 2 update sets for productionizing, go ahead and select one of them as a parent.
@@ -26,6 +26,7 @@
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
+1. Never allow deletion of records for end users (not platform administrators). Consider using "active" field instead.
 
 ## Performance
 1. Specify fields to return by a database view. And include only fields which you need.
