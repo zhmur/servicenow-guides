@@ -23,6 +23,7 @@
 1. To debug a script always use "gs.debug" or "gs.info" instead of "gs.log" as gs.log is not working in scoped app.
 1. If a Business rule, workflow, scheduled job/whatever script updates a record, always put a comment/work notes into the target record which allows identifying the code which updated it.
 1. Never use direct table API for integrations, use import set table instead. It allows to control imported data and even disable if needed.
+1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware to not capture changes made by others.
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
@@ -34,5 +35,5 @@
 
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
-1. In navigation menu use uppercase "table_name.DO" or "table_name.LIST" to open a form or list in a separate browser tab.
+1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
 1. Override (only if necessary) list rows per page limit using the URL parameter sysparm_force_row_count. Example: ?sysparm_force_row_count=10000 .
