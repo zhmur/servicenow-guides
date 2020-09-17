@@ -28,6 +28,7 @@
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 1. Never allow deletion of records for end users (not platform administrators). Consider using "active" field instead.
+1. Use templates to store static (default) values in case you need to create incident, task etc. Template can be exposed for an end users.
 
 ## Performance
 1. Specify fields to return by a database view. And include only fields which you need.
