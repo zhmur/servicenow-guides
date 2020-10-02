@@ -24,6 +24,7 @@
 1. If a Business rule, workflow, scheduled job/whatever script updates a record, always put a comment/work notes into the target record which allows identifying the code which updated it.
 1. Never use direct table API for integrations, use import set table instead. It allows to control imported data and even disable if needed.
 1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware to not capture changes made by others.
+1. When using current.setAbortAction(true) in business rules, always add current.setWorkflow(false) as otherwise it won't stop remaining BR to run in sequence.
 
 ## Patterns
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
