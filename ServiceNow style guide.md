@@ -35,6 +35,7 @@
 1. Specify fields to return by a database view. And include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 1. Be aware that workflow activities are executed synchronously after manual action (like approval). This can significantly impact form submission time. Consider 1 second timer after manual step as a remedy.
+1. It is a good practice to keep scheduled jobs and imports disabled in development instance. It significantly increases instance performance which leads to quick response and means no "instance-slow" delay during development cycle. 
 
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
