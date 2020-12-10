@@ -5,6 +5,7 @@
 1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token".
 1. Use ";" (semicolon) as separator if you need to show list of usernames in a string. For example, pattern "&lt;last name>, &lt;first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Dureiko, Sergey".
 1. Use "var_ as" prefix for variables in catalog items. It helped once to avoid issues when variable sets included to dotwalking.
+1. Place reference name or "Number" field top left on the form layout; first on the list layout.
 
 ## Maintenance
 1. Put old item name to sc_cat_item.meta field in case of catalog item rename. If item was used in production at least once in last 3 months. For popular items consider keeping old name in the sc_cat_item.name for some time. So that users will have time to adapt.
@@ -41,3 +42,6 @@
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
 1. Override (only if necessary) list rows per page limit using the URL parameter sysparm_force_row_count. Example: ?sysparm_force_row_count=10000 .
+
+## Further reading
+1. [High Performance Browser Networking](https://hpbn.co/)
