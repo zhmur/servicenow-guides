@@ -1,3 +1,4 @@
+# ServiceNow style guide
 ## Syntax, names, labels, defaults
 1. Use singular name for a tables. Example: "incident".
 1. Use plural name for the slushbacket (_List_ type) fields. Examples: "u_regions", "u_countries".
