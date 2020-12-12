@@ -1,6 +1,6 @@
 # Performance considerations
 
-## Async
+## Async business rules
 
 In case this option is selected Scheduler Worker executes scheduled job created when the business rule is triggered. The system creates a scheduled job (inserts record into sys_trigger table) from the business rule after the user submits the form and after any action is taken on the record in the database.
 
