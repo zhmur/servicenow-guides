@@ -4,8 +4,8 @@
 1. Use plural name for the slushbacket (_List_ type) fields. Examples: "u_regions", "u_countries".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
 1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token".
-1. Use "ID" suffixe for GlideRecord sys_id containing variables in scripts.
-1. Use "var_" as prefix for variable names in catalog items. It helped once to avoid issues when variable sets included to dot-walking.
+1. Use "ID" suffixe for variables containing GlideRecord sys_id in scripts.
+1. Use "var_" prefix for variable names in catalog items. It helped once to avoid issues when variable sets included to dot-walking.
 1. Place reference name or "Number" field top left on the form layout; first on the list layout.
 1. Use ";" (semicolon) as separator if you need to show list of usernames in a string. For example, pattern "&lt;last name>, &lt;first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Dureiko, Sergey".
 
