@@ -2,7 +2,7 @@
 ## Syntax, names, labels, defaults
 1. Use singular name for tables. Example: "incident".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
-1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance considerations.md) document.
+1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance%20considerations.md) document.
 1. Use plural name for the slushbacket (_List_ type) fields. Examples: "u_regions", "u_countries".
 1. Use "var_" prefix for variable names in catalog items. It helped once to avoid issues when variable sets included to dot-walking.
 1. Place reference name or "Number" field top left on the form layout; first on the list layout.
