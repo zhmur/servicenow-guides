@@ -30,9 +30,10 @@
 1. Do not back out update sets unless absolutely necessary.
 
 ## Patterns
-1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
-1. Never allow deletion of records for end users (not platform administrators). Consider using "active" field instead.
+1. Avoid custom states introduction for OOB task table extends. Address business requirements using substates.
+1. Never allow deletion of records for end users (not platform administrators). Use "active" field instead.
 1. Use templates to store static (default) values in case you need to create/update incident, task etc. Template can be exposed for end users. If template can't be used (for example, you want to submit request using Service Catalog API), create system property and put JSON with static values there.
+1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 
 ## Performance
 1. Specify fields to return by a database view. And include only fields which you need.
