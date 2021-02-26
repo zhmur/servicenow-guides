@@ -1,4 +1,4 @@
-`<`your_domain_login`>`-`<`task_number`>`-`[`seq_number`]`-`[`tags`]`
+\<your_domain_login\>-\<task_number\>-\[seq_number\]-\[tags\]
 
 [] - optional
 
