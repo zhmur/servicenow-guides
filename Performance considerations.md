@@ -16,11 +16,17 @@ Impact of slow __sync__ (after, before, query) business rule:
 
 ## New fields
 
-New field creation can take a lot of time. Especially on the task table extends. Why? Let's take look to the sequence of actions platform executes to add new field (after Calgary, also known as onlineAlter):
-1. A new empty table is created with the same schema as the table that is to be altered. The 'onlineAlter' operation is performed on this new table.
+New field creation/deletion on table with huge number of rows can take a lot of time and impact overall instance performance. Why? Let's take look to the sequence of actions platform executes to add a new field (in ServiceNow world the process is known as onlineAlter):
+<!-- 1. A new empty table is created with the same schema as the table that is to be altered. The 'onlineAlter' operation is performed on this new table.
 1. Triggers are added on the live table to copy any changes that are made against the live table to the new table.
 1. All data is copied in chunks, from the live table to the new table.
 1. Once all of the data is copied, the tables are swapped. This requires a very very brief table-lock.
-The old unused table is dropped.
+The old unused table is dropped. -->
+1. Create a temporary table with the new definition (for example, with a new field)
+1. Copy the data from the original table
+1. Drop the original table
+1. Rename the temporary table, so that it replaces the original one (shot table lock occurs here)
 
 While the new process is safer and far more stable it does use additional resources as a result, because of this, users logged into the node that is committing the update set may experience some decreased performance during the update set commit process. It is because of this that it is highly recommended for update sets that include any new columns to the Task or Children of Task tables, should be committed outside of peak business hours. Also, because of the implementation of flattening on the Task table starting with the Dublin release, any alters against Task and Children of Task will now take extensive amounts of time given the size of the flattened task table.
+
+Additional information is avialable in MariaDB [documentation](https://mariadb.com/kb/en/innodb-online-ddl-overview/).
