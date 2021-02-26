@@ -1,5 +1,6 @@
 # ServiceNow style guide
 ## Syntax, names, labels, defaults
+1. Follow [Update sets naming convention](Update%20sets%20naming%20convention).
 1. Use singular name for tables. Example: "incident".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
 1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance%20considerations.md) document.
