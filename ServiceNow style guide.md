@@ -44,8 +44,8 @@
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
-1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000 .
-1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true .
+1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000
+1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true
 
 ## Further reading
 1. [High Performance Browser Networking](https://hpbn.co/)
