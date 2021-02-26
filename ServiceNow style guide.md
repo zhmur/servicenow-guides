@@ -18,7 +18,7 @@
 1. To debug a script always use "gs.debug"/"gs.info" instead of "gs.log" as it doesn't work in scoped apps.
 1. If a Business rule, workflow, scheduled job/whatever script updates a record, always put a comment/work notes into the target record which allows identifying the code which updated it.
 1. Never use direct table API for integrations, use import set table instead. It allows to control imported data and even disable if needed.
-1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware to not capture changes made by others.
+1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware to not capture and transfer changes made by others.
 1. When using `current.setAbortAction(true);` in business rules, always add `current.setWorkflow(false);` as otherwise it won't stop remaining BR to run in sequence.
 
 ## Maintenance
@@ -33,6 +33,7 @@
 1. Avoid custom states introduction for OOB task table extends. Address business requirements using substates.
 1. Never allow deletion of records for end users (not platform administrators). Use "active" field instead.
 1. Use templates to store static (default) values in case you need to create/update incident, task etc. Template can be exposed for end users. If template can't be used (for example, you want to submit request using Service Catalog API), create system property and put JSON with static values there.
+1. Put meaningful information in task.short_description, especially for generic tasks. This rule is applicable for both: when you are programmatically generating it or when you are creating task by yourself. Remember! Main purpose is to quickly identify correct task from the list.
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 
 ## Performance
