@@ -3,7 +3,7 @@
 1. Follow [Update sets naming convention](Update%20sets%20naming%20convention).
 1. Use singular name for tables. Example: "incident".
 1. Capitalize each word of the table labels. Examples: "Catalog Task", "Support Group".
-1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance%20considerations.md) document.
+1. Capitalize only first letter of the field labels. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance%20considerations.md#new-fields) document.
 1. Use plural name for the slushbacket (_List_ type) fields. Examples: "u_regions", "u_countries".
 1. Use "var_" prefix for variable names in catalog items. It helped once to avoid issues when variable sets included to dot-walking.
 1. Place reference name or "Number" field top left on the form layout; first on the list layout.
@@ -45,6 +45,7 @@
 
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
+1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin.
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
 1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000
 1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true
