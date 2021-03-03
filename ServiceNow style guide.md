@@ -12,7 +12,7 @@
 ## Programming, code, style
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 1. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord('incident');`.
-1. Use "ID" suffixe for variables containing GlideRecord sys_id in scripts.
+1. Use "ID" suffix for variables containing GlideRecord sys_id in scripts. Example: `var userID = ''`.
 1. Global business rules have no conditions or table restrictions and load on every page in the system. Do not use them.
 1. A business rule must call an API to perform an action. The API is implemented in script includes. The code in business rules must be simple.
 1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional. The objects should not be passed as parameters.
