@@ -12,7 +12,7 @@
 ## Programming, code, style
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 1. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord('incident');`.
-1. Use "ID" suffixe for variables containing GlideRecord sys_id in scripts. Example: `var userID = ''`.
+1. Use "ID" suffix for variables containing GlideRecord sys_id in scripts. Example: `var userID = '';`.
 1. Global business rules have no conditions or table restrictions and load on every page in the system. Do not use them.
 1. A business rule must call an API to perform an action. The API is implemented in script includes. The code in business rules must be simple.
 1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional.
@@ -47,8 +47,8 @@
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin. Features: node switching, technical field names and many more.
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
-1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000
-1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true
+1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000.
+1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true.
 
 ## Further reading
 1. [High Performance Browser Networking](https://hpbn.co/)
