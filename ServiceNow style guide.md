@@ -12,14 +12,14 @@
 ## Programming, code, style
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
 1. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord('incident');`.
-1. Use "ID" suffix for variables containing GlideRecord sys_id in scripts. Example: `var userID = ''`.
+1. Use "ID" suffixe for variables containing GlideRecord sys_id in scripts. Example: `var userID = ''`.
 1. Global business rules have no conditions or table restrictions and load on every page in the system. Do not use them.
 1. A business rule must call an API to perform an action. The API is implemented in script includes. The code in business rules must be simple.
-1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional. The objects should not be passed as parameters.
-1. To debug a script always use "gs.debug"/"gs.info" instead of "gs.log" as it doesn't work in scoped apps.
-1. If a Business rule, workflow, scheduled job/whatever script updates a record, always put a comment/work notes into the target record which allows identifying the code which updated it.
-1. Never use direct table API for integrations, use import set table instead. It allows to control imported data and even disable if needed.
-1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware to not capture and transfer changes made by others.
+1. A script include method must tend to be context independent. Calls to _current_, _previous_, _worklow.scratchpad_, _current.variables_ objects should be exceptional.
+1. To debug a script always use `gs.debug` and `gs.info` instead of `gs.log` as it doesn't work in scoped apps.
+1. If a business rule, workflow, scheduled job/whatever script updates visible field on a record (especially task.state), always put a comment/work note into the target record which allows identifying the code which updated it.
+1. Never use direct Table API for integrations, use Import Set API instead. It allows better control of an imported data and even disable if needed.
+1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware not to capture and transfer changes made by others.
 1. When using `current.setAbortAction(true);` in business rules, always add `current.setWorkflow(false);` as otherwise it won't stop remaining BR to run in sequence.
 
 ## Maintenance
