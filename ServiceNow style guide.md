@@ -38,7 +38,7 @@
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 
 ## Performance
-1. Specify fields to return by a database view. And include only fields which you need.
+1. Specify fields to return by a database view. Include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 1. Be aware that workflow activities are executed synchronously after manual action (like approval). This can significantly impact form submission time. Consider 1 second timer after manual step as a remedy.
 1. It is a good practice to keep scheduled jobs and imports disabled in development instance. It significantly increases instance performance which leads to quick response and means no "instance-slow" delay during development cycle. 
@@ -46,6 +46,7 @@
 ## Tricks
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin. Features: node switching, technical field names and many more.
+1. Plus sign ("+") in an email address can be very useful. Everything between "+" and "@" will be ignored during email routing. For details check [RFC 822](http://www.faqs.org/rfcs/rfc822.html).
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
 1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000.
 1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true.
