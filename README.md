@@ -1,4 +1,4 @@
-# ServiceNow style guide
+# ServiceNow development guide
 ## Syntax, names, labels, defaults
 1. Follow [Update sets naming convention](Update%20sets%20naming%20convention).
 1. Use singular name for tables. Example: "incident".
