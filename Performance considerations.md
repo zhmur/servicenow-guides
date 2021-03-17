@@ -18,11 +18,11 @@ URL does not contain sys_dictionary OR URL does not contain sys_db_object
 
 Table/field creation from the UI will occur mainly in two places sys_dictionary and sys_db_object. This is the reasoning for adding these two conditions. By adding the conditions the UI Transaction quota bypasses UI transactions when a field or table is being created.
 
-INSTANT, NOCOPY and INPLACE alters are available starting from Quebec release. Of course, your database have to be upgraded to the version of MariaDB where this is available (10.3.7).
+INSTANT, NOCOPY and INPLACE alters are available starting from Quebec release. Your database have to be upgraded to the version of MariaDB where this is available (10.3.7). To get database version navigate to `https://<instance>.service-now.com/xmlstats.do?include=database` and check value of db.product_version tag.
 
 Additional information is avialable in MariaDB [documentation](https://mariadb.com/kb/en/innodb-online-ddl-overview/).
 
-By using one update set, you are able to group alters. For example, if 10 columns created through UI then it has to go through 10 ALTERS, but if they all committed through one update set all of them will be done through 1 alter.
+By using one update set, you are able to group alters. For example, if 10 columns (for one storage table) are created through UI then it has to go through 10 ALTERS, but if they all committed through one update set all of them will be done through 1 alter.
 
 ## Async business rules
 
