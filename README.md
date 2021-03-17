@@ -4,7 +4,7 @@
 1. Use singular name for tables. Example: "incident", "task".
 1. Capitalize each word of a table label. Examples: "Catalog Task", "Support Group".
 1. Use plural name for the slushbacket (list collector) fields and variables. Examples: "u_regions", "u_countries".
-1. Capitalize only first letter of a field label. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ please check "New fields" section of the [Performance considerations](Performance%20considerations.md#new-fields) document.
+1. Capitalize only first letter of a field label. Abbreviations can be considered as an exception. Examples: "Due date", "JWT token". __WARNING:__ read "New fields" section of the [Performance considerations](Performance%20considerations.md#new-fields) document.
 
 ## Programming, code, style
 1. Use ES5 [Airbnb JavaScript Style Guide() {](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) for all JavaScript code.
@@ -35,20 +35,19 @@
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 1. Use ";" (semicolon) as separator if you need to show list of usernames in a string. For example, pattern "&lt;last name>, &lt;first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Dureiko, Sergey".
 1. Place "Number" or reference name field top left on the form layout; first on the list layout.
+1. Use email subaddressing to give out alternatives to your instance email address. Format: `:user "+" :detail  "@" :domain`. The text of the tag can be used to configure simple and reliable filter for inbound email action. Example: dev100824+security_incident@service-now.com.
 
 ## Performance
 1. Specify fields to return by a database view. Include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 1. Be aware that workflow activities are executed synchronously after manual action (like approval). This can significantly impact form submission time. Consider 1 second timer after manual step as a remedy.
-1. It is a good practice to keep scheduled jobs and imports disabled in development instance. It significantly increases instance performance which leads to quick response and means no "instance-slow" delay during development cycle. 
 
-## Tricks
+## Tricks & tools
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin. Features: node switching, technical field names and many more.
-1. Plus sign ("+") in an email address can be very useful. Everything between "+" and "@" will be ignored during email routing. For details check [RFC 822](http://www.faqs.org/rfcs/rfc822.html).
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
 1. Override (only if necessary) list rows per page limit with URL parameter: ?sysparm_force_row_count=10000
-1. Open extremely large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true
+1. Open large tables (like sys_audit) with filters only with URL parameter: ?sysparm_filter_only=true
 
 ## Further reading
 1. [High Performance Browser Networking](https://hpbn.co/)
