@@ -1,6 +1,6 @@
 # ServiceNow development guide
 ## Syntax, names, labels, defaults
-1. Follow [Update sets naming convention](Update%20sets%20naming%20convention).
+1. Follow [Update sets naming convention](Update%20sets%20naming%20convention.md).
 1. Use singular name for tables. Example: "incident", "task".
 1. Capitalize each word of a table label. Examples: "Catalog Task", "Support Group".
 1. Use plural name for the slushbacket (list collector) fields and variables. Examples: "u_regions", "u_countries".
