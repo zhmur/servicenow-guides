@@ -1,32 +1,33 @@
 # Performance considerations
 
-## Async vs sync business rules
-
-In case async business rule is triggered system creates scheduled job (inserts record into sys_trigger table) from the business rule after the user submits the form and after any action is taken on the record in the database. Then Scheduled Worker executes the job.
-
-Impact of slow __async__ business rule:
-* The user transaction that triggered the business rule will complete before the business rule is run.
-* The user will be able to immediately perform a second transaction without waiting for the business rule to complete.
-* The business rule will consume a Scheduler Worker as long as it runs. If several users are doing similar transactions that trigger same async business rule that takes a long time to execute we could potentially end up with all Scheduler Workers running only the jobs triggered by async business rule. In that case following processes will be delayed: SLAs updates, events processing (and, as a result, emails delays)...
-
-Impact of slow __sync__ (after, before, query) business rule:
-* The business rule transaction will be same as user transaction so it will consume a Default semaphore as long as it runs.
-* The user will not be able to perform a second transaction until the business rules completes and the transaction finishes.
-* If several users are doing similar transactions that trigger same sunchronous business rule we could potentially end up with all semaphores consumed with transactions for that particular business rule. In that case new user transactions will be queued until a semaphore is available.
-
 ## New fields
 
-New field creation/deletion on table with huge number of rows can take a lot of time and impact overall instance performance. Why? Let's take look to the sequence of actions platform executes to add a new field (in ServiceNow world the process is known as onlineAlter):
-<!-- 1. A new empty table is created with the same schema as the table that is to be altered. The 'onlineAlter' operation is performed on this new table.
-1. Triggers are added on the live table to copy any changes that are made against the live table to the new table.
-1. All data is copied in chunks, from the live table to the new table.
-1. Once all of the data is copied, the tables are swapped. This requires a very very brief table-lock.
-The old unused table is dropped. -->
-1. Create a temporary table with the new definition (for example, with a new field)
-1. Copy the data from the original table
-1. Drop the original table
-1. Rename the temporary table, so that it replaces the original one (shot table lock occurs here)
+When a field creation on a table is initiated there are two possible outcomes:
 
-While the new process is safer and far more stable it does use additional resources as a result, because of this, users logged into the node that is committing the update set may experience some decreased performance during the update set commit process. It is because of this that it is highly recommended for update sets that include any new columns to the Task or Children of Task tables, should be committed outside of peak business hours. Also, because of the implementation of flattening on the Task table starting with the Dublin release, any alters against Task and Children of Task will now take extensive amounts of time given the size of the flattened task table.
+__Glomming__ - The system will attempt to find a physical column on the storage table where the field is being created to see if there is a column of the same data type and max length. If one is found a new storage alias entry is created (in sys_storage_alias table) for that field and no ALTER on the physical storage table is executed.
+
+__Alter table__ - If the system cannot find a physical column to glomm to a new field will be created directly on the physical storage table resulting in an online alter. Depending on how large the physical storage table is an online alter can take time to complete.
+
+When creating a field from the UI and if an ALTER is performed it is possible to see a table/field that has been partially created. There are quota rules at play on every instance that prevent long running transactions from executing. Specifically the UI transaction quota rule which cancels any UI transaction which runs longer than 298 seconds. Users/admins should be mindful of this as any field/table creation from the UI which results in an online alter that runs longer than 298 seconds will be aborted by the transaction quota rule leaving metadata records behind for partially created fields. The transaction quota does not apply when creating tables/fields from an update set.
+
+The UI Transaction module can be found under System Definition > Transaction Quota Rules > UI Transactions
+
+If the table where the field is being created is greater than 500,000 rows it is best to add conditions to ensure that if an online-alter is performed against the table it will complete successfully without aborting. To do this, an admin can simply add two OR conditions to the existing quota rule:
+
+URL does not contain sys_dictionary OR URL does not contain sys_db_object
+
+Table/field creation from the UI will occur mainly in two places sys_dictionary and sys_db_object. This is the reasoning for adding these two conditions. By adding the conditions the UI Transaction quota bypasses UI transactions when a field or table is being created.
+
+INSTANT, NOCOPY and INPLACE alters are available starting from Quebec release. Of course, your database have to be upgraded to the version of MariaDB where this is available (10.3.7).
 
 Additional information is avialable in MariaDB [documentation](https://mariadb.com/kb/en/innodb-online-ddl-overview/).
+
+By using one update set, you are able to group alters. For example, if 10 columns created through UI then it has to go through 10 ALTERS, but if they all committed through one update set all of them will be done through 1 alter.
+
+## Async business rules
+
+When async business rule is triggered system inserts record into sys_trigger table when user submits the form. Scheduled Worker executes the trigger after any action is taken on the record which triggered BR execution. <!-- Add information about condition. -->
+
+Slow __async__ business rule:
+* User transaction will complete without waiting for BR code execution. As a result, user will be able to immediately perform another transaction.
+* The business rule (sys_trigger) will consume a Scheduler Worker as long as it runs. If several users are doing similar transactions (or in case batch update/upload of records is performed) we could potentially end up with all Scheduler Workers running only the jobs triggered by async business rule. In that case following processes can be: event processors, SMTP sender, POP reader...
