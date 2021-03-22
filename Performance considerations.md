@@ -22,7 +22,7 @@ INSTANT, NOCOPY and INPLACE alters are available starting from Quebec release. Y
 
 Additional information is avialable in MariaDB [documentation](https://mariadb.com/kb/en/innodb-online-ddl-overview/).
 
-By using one update set, you are able to group alters. For example, if 10 columns (for one storage table) are created through UI then it has to go through 10 ALTERS, but if they all committed through one update set all of them will be done through 1 alter.
+By using one update set, you are able to group table alters. For example, if 10 columns (for one storage table) are created through UI then it has to go through 10 ALTERS, but if they all committed through one update set then all of them will be done through 1 alter. This works only in scope of 1 update set. Combining multiple update sets using batching will NOT allow this optimization to combine alters from multiple update sets.
 
 ## Async business rules
 
