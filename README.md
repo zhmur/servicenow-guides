@@ -1,3 +1,4 @@
+
 # ServiceNow development guide
 ## Syntax, names, labels, defaults
 1. Follow [Update sets naming convention](Update%20sets%20naming%20convention.md).
@@ -11,6 +12,7 @@
 1. By default use full table name for GlideRecord class variables. Example: `var incident = new GlideRecord('incident');`.
 1. Use "ID" suffix for variables containing GlideRecord sys_id in scripts. Example: `var userID = '';`.
 1. Do not use global business rules as they have no conditions or table restrictions and as a result load on every page in the system.
+1. Do not use `gs.sleep`. The `gs.sleep` does not release session and blocks thread (occupies Scheduler Worker); the instance may run out of worker threads for other jobs.
 1. Logic inside business rule should be simple. Complex logic should be incapsulated in script include(s).
 1. A script include method should tend to be context independent. Calls to `current`, `previous`, `worklow.scratchpad`, `current.variables` objects should be exceptional. Passing GlideRecord through parameter or constructor is okay.
 1. Use `gs.debug` and `gs.info` instead of `gs.log` as it doesn't work in a scoped apps. If you want to use it in Global scope always specify "source" parameter: `gs.log('Test message', 'Test source');`. This will help to identify origin of the messages in system log.
