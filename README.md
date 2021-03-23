@@ -37,7 +37,7 @@
 1. Consider a script include for each table to implement data manipulations: creating, modifying, querying data.
 1. Use ";" (semicolon) as separator if you need to show list of usernames in a string. For example, pattern "&lt;last name>, &lt;first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Dureiko, Sergey".
 1. Place "Number" or reference name field top left on the form layout; first on the list layout.
-1. Use email subaddressing to give out alternatives to your instance email address. Format: :email "+" :tag  "@" :domain. The text of the tag can be used to configure simple and reliable filter for inbound email action. Example: dev100824+security_incident@service-now.com.
+1. Use email subaddressing to give out alternatives to your instance email address. Format: `<email>+<tag>@<domain>`. The text of the tag can be used to configure simple and reliable filter for inbound email action. Example: dev100824+security_incident@service-now.com.
 
 ## Performance
 1. Specify fields to return by a database view. Include only fields which you need.
@@ -48,8 +48,8 @@
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin. Features: node switching, technical field names and many more.
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
-1. Override (only if necessary, this may hit instance from performance perspective) list row count per page: https://dev100824.service-now.com/incident_list.do?sysparm_force_row_count=100
-1. Open large tables (for example sys_audit) without data: https://dev100824.service-now.com/incident_list.do?sysparm_filter_only=true
+1. Override (only if necessary, this may hit instance from performance perspective) list row count per page: `https://<instance>.service-now.com/<table>_list.do?sysparm_force_row_count=100`.
+1. Open large tables (for example sys_audit) without data: `https://<instance>.service-now.com/<table>_list.do?sysparm_filter_only=true`.
 
 ## Further reading
 1. [High Performance Browser Networking](https://hpbn.co/)
