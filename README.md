@@ -43,6 +43,8 @@
 1. Specify fields to return by a database view. Include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
 1. Be aware that workflow activities are executed synchronously after manual action (like approval). This can significantly impact form submission time. Consider 1 second timer after manual step as a remedy.
+1. GlideRecord.getRowCount() vs GlideAggregate. General preference is to use GlideAggregate to get count of the records in a query.
+Though, the benefits of GlideAggregate are visible on large datasets i.e. when query result set is big (aka > 10k records).
 
 ## Tricks & tools
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
