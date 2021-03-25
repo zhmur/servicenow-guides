@@ -15,7 +15,7 @@
 1. Do not use `gs.sleep`. It does not release session and blocks thread (occupies Scheduler Worker). As a result instance may run out of worker threads for other jobs.
 1. Logic inside business rule should be simple. Complex logic should be incapsulated in script include(s).
 1. A script include method should tend to be context independent. Calls to `current`, `previous`, `worklow.scratchpad`, `current.variables` objects should be exceptional. Passing GlideRecord through parameter or constructor is okay.
-1. Use `gs.debug` and `gs.info` instead of `gs.log` as it doesn't work in a scoped apps. If you want to use it in Global scope always specify "source" parameter: `gs.log('Test message', 'Test source');`. This will help to identify origin of the messages in system log.
+1. Use `gs.debug` and `gs.info` instead of `gs.log` as it doesn't work in a scoped apps. If you want to use it in Global scope always specify "source" parameter: `gs.log('Message', 'Source');`. This will help to identify origin of the messages in system log.
 1. If a business rule, workflow, scheduled job/whatever script updates visible field on a record (especially task.state), always put a comment/work note into the target record which allows to quickly identify update source.
 1. Never use direct "Table API" for integrations, use "Import Set API" instead. It enables better control of imported data and source indentification.
 1. Before changing a code, be sure it is the same as in production and not changed by others. Be aware not to capture and transfer changes made by others.
