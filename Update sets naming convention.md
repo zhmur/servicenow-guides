@@ -1,14 +1,14 @@
 # Update sets naming convention
 
-`<domain_login>-<task_number>-[sequence]-[tags]`
+`<login>-<task>-[sequence]-[tags]`
 
 [] - optional
 
 Where:
 
-domain_login - Domain account name (you are using it to login to your Windows).
+login - Domain account name (Active Directory (aka Windows) account name without domain). If you have only local login ommit prefix (not "loc_zhmurart", but "zhmurart").
 
-task_number - Task which motivated you to do development. In case of Requested Item, put Catalog Task number.
+task - Task number which motivated you to do development. In case of Requested Item, put Catalog Task number.
 
 sequence - Add and increase by 1 for each separate update set for the same task.
 
