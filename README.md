@@ -38,6 +38,7 @@
 1. Use ";" (semicolon) as separator if you need to show list of usernames in a string. For example, pattern "&lt;last name>, &lt;first name>" is very popular one for large enterprises because surname is more selective then a name. Example: "Zhmur, Artur; Dureiko, Sergey".
 1. Place "Number" or reference name field top left on the form layout; first on the list layout.
 1. Use email subaddressing to give out alternatives to your instance email address. Format: `<email>+<tag>@<domain>`. The text of the tag can be used to configure simple and reliable filter for inbound email action. Example: dev100824+security_incident@service-now.com.
+1. Extend Import Set API response with additional attribute using Transform Map script (sys_transform_map.script): `response.<attribute> = '';`.
 
 ## Performance
 1. Specify fields to return by a database view. Include only fields which you need.
