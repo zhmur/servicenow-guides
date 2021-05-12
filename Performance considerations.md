@@ -32,9 +32,9 @@ Slow __async__ business rule:
 * User transaction will complete without waiting for BR code execution. As a result, user will be able to immediately perform another transaction.
 * The business rule (sys_trigger) will consume a Scheduler Worker as long as it runs. If several users are doing similar transactions (or in case batch update/upload of records is performed) we could potentially end up with all Scheduler Workers running only the jobs triggered by async business rule. In that case following processes can be: event processors, SMTP sender, POP reader...
 
-## ACLs 
+## ACLs (Access Control Lists)
 
-For performance reasons it's important to know ACL evaluation sequence:
+For performance reasons it's important to know ACLs evaluation sequence:
 1. Requires role
 1. Condition
 1. Script
@@ -43,4 +43,4 @@ From performance perspective order is exactly the same (Сoincidence? I don't th
 
 Why script is the slowest? Well, ServiceNow has to invoke a Rhino Javascript engine to evaluate this script. The best practice with scripts is to have them shielded by "Requires role" and "Condition". In this way, the script won’t even run unless the ACL first matches the role and then matches the condition, potentially sidestepping a performance overhead before it occurs.
 
-And one last thing. Even for condition try to avoid dot-walking ("Show related records"). Each dot-walk is additonal query to the database.
+And one last thing. Even for "Condition" try to avoid dot-walking ("Show related records"). Each dot-walk is additonal query to the database.
