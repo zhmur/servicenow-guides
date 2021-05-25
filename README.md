@@ -43,7 +43,7 @@
 ## Performance
 1. Specify fields to return by a database view. Include only fields which you need.
 1. Check widgets performance using ServiceNow provided [script](https://hi.service-now.com/kb_view.do?sysparm_article=KB0744521).
-1. Be aware that workflow activities are executed synchronously after manual action (like approval). This can significantly impact form submission time. Consider 1 second timer after manual step as a remedy.
+1. Be aware that platform executes workflow activities sycnhronously after a manual action (e.g., approval, item submission on SP). This can significantly impact form submission time. Make sure that synchronously executed code is fast or place 1 second Timer after manual step to make the rest of the workflow async (non-interactive).
 1. GlideRecord.getRowCount() vs GlideAggregate. General preference is to use GlideAggregate to get count of the records in a query.
 Though, the benefits of GlideAggregate are visible on large datasets i.e. when query result set is big (aka > 10k records).
 
@@ -51,6 +51,7 @@ Though, the benefits of GlideAggregate are visible on large datasets i.e. when q
 1. Use "- b" + Enter in the Navigator filter to quickly find and open "Scripts - Background".
 1. Use [SN Utils](https://www.arnoudkooi.com/) browser plugin. Features: node switching, technical field names and many more.
 1. In navigation menu use uppercase "table_name.LIST" to open a list in a separate browser tab.
+1. Cancel all running transactions under your account (only on your current cluster node): `https://<instance>.service-now.com/cancel_my_transaction.do`.
 1. Override (only if necessary, this may hit instance from performance perspective) list row count per page: `https://<instance>.service-now.com/<table>_list.do?sysparm_force_row_count=100`.
 1. Open large tables (for example sys_audit) without data: `https://<instance>.service-now.com/<table>_list.do?sysparm_filter_only=true`.
 
