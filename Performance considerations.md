@@ -45,16 +45,16 @@ Why script is the slowest? Well, ServiceNow has to invoke a Rhino JavaScript eng
 
 And one last thing. Even for "Condition" try to avoid dot-walking ("Show related records"). Each dot-walk is additonal query to the database.
 
-## System properties update vs instance cache
+## System properties vs instance cache
 
-ServiceNow is a clustered platform with multiple nodes working as a single instance of ServiceNow. Each node maintains its own cache to avoid excessive database queries on commonly used items. System properties are, at no surpside, part of this cache.
+ServiceNow is a clustered platform with multiple nodes working as a single instance of ServiceNow. Each node maintains its own cache to avoid excessive database queries to fetch commonly used items from database. System properties are, at no surpside, part of this cache.
 
-So how to keep those caches in sync? Well the aswer is simple. When a property is changed on one node, it tells all the other nodes to dump their property caches and get the new value of all their properties from the database again. This has a completely trivial impact on system performance. This happens regardless of if the ignore_cache field is set to true or not for the specific property.
+So how instance keeps those caches in sync? Well, the aswer is simple. When a property is changed on one node, it tells all the other nodes to dump their properties cache and get the new value for all properties from the database. This has small impact on system performance. This happens regardless of the ignore_cache field been set to true for the specific property.
 
-If ignore_cache = false (default value) then we not only flush the property cache but we also flush the whole system cache. The reason is that we need make sure to flush any dependencies or stale values in other caches that might be related to the old value of the property that was just changed.
+If ignore_cache set to false (default value) then we not only flush the properties cache but we also flush the whole system cache on all nodes. The reason is that we need make sure to flush any dependencies or stale values in other caches that might be related to the old value of the property that was just changed.
 
-In short, if ignore_cache = true on property value change we will flush only property cache on all nodes, if to false we will flush complete sytem cache.
+In short: ignore_cache = true > properties cache flush; ignore_cache = false > system cache flush.
 
-All cache flushes can be observed in sys_cache_flush table.
+Cache flushes can be observed in sys_cache_flush table.
 
-Part of the cache can be dumped manually using undocumented `gs.cacheFlush('syscache_realform');`. In the example provided system will flush cache for form layouts. All possible values can be found using cache_inspect.do page (use Debug Security to understand how to access it).
+Cache can be flushed partially using undocumented `gs.cacheFlush('syscache_realform');`. In this example system will flush cache for form layouts. All possible values can be found on cache_inspect.do (use Debug Security to understand how to access it). Without parameter equal to cache.do.
