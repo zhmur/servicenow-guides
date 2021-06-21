@@ -57,3 +57,4 @@ Though, the benefits of GlideAggregate are visible on large datasets i.e. when q
 ## Further reading
 1. [High Performance Browser Networking](https://hpbn.co/)
 1. [You Don't Know JS: Up & Going - Chapter 2: Into JavaScript](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/up%20%26%20going/ch2.md)
+1. Blog: [snhackery](https://snhackery.com/)
