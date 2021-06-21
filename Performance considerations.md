@@ -59,4 +59,4 @@ Cache flushes can be observed in sys_cache_flush table.
 
 Cache can be flushed programmatically using undocumented `gs.cacheFlush('syscache_realform');`. In this example system will flush cache for form layouts. All possible values can be found on cache_inspect.do (use Debug Security to understand how to access it). Without parameter equal to cache.do.
 
-Recommendation: do not use properties for values that will be frequently changed (that is, more than once a month).
+Recommendation: do not use properties for values that will be frequently changed (let's say, more than once a month). 
